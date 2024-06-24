@@ -1,3 +1,8 @@
+/* *{
+    margin: 0px;
+    padding: 0px;
+} */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -25,7 +30,7 @@ header>:last-child>span {
 .contaner {
     /* display: flex;
     justify-content: space-between; */
-   border: solid 2px red;
+    border: solid 2px red;
 }
 
 .sidebar {
@@ -59,17 +64,50 @@ header>:last-child>span {
 }
 
 .colepsed {
-    width:20% ;
+    width: 20%;
 }
 
 
-.main{
+.main {
     border: solid 2px blue;
     width: 80%;
     margin: auto;
     height: 400px;
 }
 
-.tast-info{
+.tast-info {
     display: none;
+}
+
+.assets-cont {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: solid 2px yellow;
+    gap: 50px;
+    padding: 18px;
+}
+
+.assets-cont>div {
+    display: flex;
+    flex-direction: column;
+    border: solid 2px green;
+    border-radius: 20px;
+}
+
+.assets-cont>div>:first-child {
+    padding: 0px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.head-titel {
+    background-color: black;
+    color: white;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+}
+
+.head-titel>h3 {
+    margin: 7px;
 }

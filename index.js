@@ -9,15 +9,15 @@ const jsonData = {
                 {
                     "asset_id": 18883,
                     "asset_title": "Technical Project Management",
-                    "asset_description": "Story of Alignment\r\nScope of Agility\r\nSpecific Accountable \r\nStaggering Approach\r\n\r\n",
+                    "asset_description": "Story of Alignment Scope of Agility Specific,Accountable Staggering Approach",
                     "asset_content": " https://www.youtube.com/embed/TiMRwri1xJ8",
                     "asset_type": "display_asset",
-                    "asset_content_type": "video"
+                    "asset_content_type": "videoCont"
                 },
                 {
                     "asset_id": 18884,
                     "asset_title": "Threadbuild",
-                    "asset_description": "Watch the video and thread build, and jot out key threads while watching that video.",
+                    "asset_description": "Watch the videoCont and thread build, and jot out key threads while watching that video.",
                     "asset_content": " ",
                     "asset_type": "input_asset",
                     "asset_content_type": "threadbuilder"
@@ -59,6 +59,7 @@ const taskInfo = document.querySelector(".tast-info")
 const taskContener = document.querySelector(".main")
 
 const heading = document.querySelector(".main>h1")
+
 
 
 // for collaps the side bar
@@ -118,45 +119,80 @@ const creatTaskTop = (title, description) => {
 }
 
 // create card for all assets
-const createTaskCard = (cont,contType,desc,titel,assetType)=>{
-    if(contType == "video"){
+const myAssetsCont = document.createElement('div')
+myAssetsCont.className = "assets-cont"
 
-    }
 
-    else if(contType == "Threadbuild"){
+const createTaskCard = (asset) => {
 
-    }
+    // console.log(asset);
+    const {
+        asset_title,
+        asset_description,
+        asset_content,
+        asset_type,
+        asset_content_type,
+    } = asset
 
-    else if(contType == "article" && assetType == "input_asset"){
+    let card = document.createElement("div")
 
-    }
+    let head = document.createElement("div")
+    head.className = "head-titel"
+
+    let h3 = document.createElement("h3")
+    h3.innerText = asset_title
+
+    let imgCont = document.createElement("div")
+    let img = document.createElement("img")
+    img.src = "./assets/Group 1735.png"
+    imgCont.append(img)
     
-    else if(contType == "article" && assetType == "display_asset"){
+head.append(h3,imgCont)
 
+    let p = document.createElement("p")
+    p.innerText = `Description : ${asset_description}`
+
+
+
+
+
+    if (asset_content_type === "videoCont") {
+        let videoCont = document.createElement("iframe")
+        videoCont.src = asset_content
+        card.append(head, p, videoCont)
     }
-  
-}
 
+    else if (asset_content_type == "threadbuilder") {
+        card.append(head, p)
+    }
+
+    else if (asset_content_type == "article" && asset_type == "input_asset") {
+        card.append(head, p)
+    }
+
+    // else if (contType == "article" && assetType == "display_asset") {
+
+    // }
+
+    myAssetsCont.append(card)
+}
 
 // get all task asset from task assets arr
 const getTaskAsset = (assets) => {
     assets.map((asset) => {
         console.log(asset);
-        const { 
-            asset_content,
-            asset_content_type,
-            asset_description,
+        const {
             asset_title,
+            asset_description,
+            asset_content,
             asset_type,
+            asset_content_type,
         } = asset
 
-        createTaskCard(
-            asset_content,
-            asset_content_type,
-            asset_description,
-            asset_title,
-            asset_type)
+        createTaskCard(asset)
     })
+    taskContener.append(myAssetsCont)
+
 }
 
 
@@ -164,12 +200,11 @@ const getTaskAsset = (assets) => {
 // hare is i get all task
 const getAllTask = (tasks) => {
     tasks?.map((task) => {
-        console.log(task);
         const { task_title, task_description, assets } = task
         getTaskInfo(task)
-        getTaskAsset(assets
-        )
         creatTaskTop(task_title, task_description
+        )
+        getTaskAsset(assets
         )
     })
 }
