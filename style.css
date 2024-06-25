@@ -3,10 +3,10 @@
     padding: 0px;
 } */
 
+/* styling for header */
 header {
     display: flex;
     justify-content: space-between;
-    border: solid 2px red;
     align-items: center;
     width: 90%;
     margin: auto;
@@ -27,16 +27,12 @@ header>:last-child>span {
     justify-content: center;
 }
 
-.contaner {
-    /* display: flex;
-    justify-content: space-between; */
-    border: solid 2px red;
-}
+/* styling for left side bar */
 
 .sidebar {
     width: 7%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    height: 50vh;
+    height: 70vh;
     border-radius: 12px;
     border-top-right-radius: 18px;
     margin: 2px;
@@ -57,9 +53,9 @@ header>:last-child>span {
 .card-count>h3 {
     text-align: center;
     background-color: #fdfdfd;
-    border: solid 2px blue;
     padding: 15px;
     border-radius: 12px;
+
     margin: 20px;
 }
 
@@ -67,31 +63,93 @@ header>:last-child>span {
     width: 20%;
 }
 
-
-.main {
-    border: solid 2px blue;
-    width: 80%;
-    margin: auto;
-    height: 400px;
-}
-
 .tast-info {
     display: none;
 }
 
+/* hare is right side bar */
+.right-sidebar {
+    width: 7%;
+    position: absolute;
+    right: 0;
+    top: 70px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.right-sidebar>div {
+    width: 50%;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding: 20px 0px;
+}
+
+.right-sidebar>div>img {
+    cursor: pointer;
+}
+
+.right-sidebar>div>h3 {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding-top: 2px;
+}
+
+/* styling for main */
+
+.main {
+    width: 70%;
+    margin: auto;
+}
+/* hare is the main top heading saction styleing*/
+.main-top{
+    display: flex;
+    justify-content: space-between;
+}
+.main-top>h1{
+    color: blue;
+}
+.main-top>button{
+    width: 14%;
+    height: 30px;
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 17px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+.main>:nth-child(2){
+   background-color: #e9ecef;
+   padding: 10px;
+   border-radius: 10px;
+}
+.main>:nth-child(2)>:first-child{
+    font-size: 30px;
+    margin: 3px;
+}
+
+/* hare is asset card contener */
 .assets-cont {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    border: solid 2px yellow;
-    gap: 50px;
+    gap: 100px;
     padding: 18px;
 }
 
+/* hare is asset card  */
 .assets-cont>div {
     display: flex;
     flex-direction: column;
-    border: solid 2px green;
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px;
 }
 
 .assets-cont>div>:first-child {
@@ -108,6 +166,107 @@ header>:last-child>span {
     border-top-right-radius: 14px;
 }
 
+/* hare is the styling of thered contener 1 */
 .head-titel>h3 {
     margin: 7px;
+}
+
+.thread-cont {
+    margin-bottom: 20px;
+}
+
+.thread-cont>button {
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.thread-cont>button>span {
+    width: 50%;
+    display: block;
+    align-items: center;
+}
+
+.thread-cont>button>span>img {
+    width: 14%;
+    margin-right: 10px;
+}
+
+.thread-Child {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.colleps-div {
+    display: none;
+    justify-content: space-between;
+}
+
+
+
+.colleps-div>div {
+    width: 40%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.thread-Child>div>textarea {
+    width: 90%;
+}
+
+.const-div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.const-div>:first-child {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.const-div>:last-child {
+    width: 100%;
+}
+
+.const-div>:first-child>div,
+button {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    padding: 2px 5px;
+    border-radius: 6px;
+}
+
+.const-div>:nth-child(2) {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    width: 30%;
+    border-radius: 12px;
+    padding: 10px 15px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.const-div>:last-child {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.const-div>:last-child>textarea {
+    width: 90%;
 }
