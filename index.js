@@ -74,12 +74,26 @@ function togelSidebar() {
         taskInfo.style.display = "block"
         sidebar.style.height = "100%"
 
+        sidebarBtn.innerHTML = `<div>
+                    <h3>Journey Board</h3>
+                    <div>
+                        <img src="./assets/backArrow.png" alt="">
+                    </div>
+                </div>`
     }
     else {
         sidebar.classList.remove("colepsed")
         taskCount.style.display = "block"
         taskInfo.style.display = "none"
         sidebar.style.height = "50%"
+
+        sidebarBtn.innerHTML = `
+         <div>
+                    <h3></h3>
+                    <div>
+                        <img src="./assets/arrbtn.png" alt="">
+                    </div>
+                </div>`
     }
 }
 
@@ -117,6 +131,8 @@ const creatTaskTop = (title, description) => {
 
     taskContener.append(div)
 }
+
+
 
 // create card for all assets
 const myAssetsCont = document.createElement('div')
@@ -175,11 +191,11 @@ const createTaskCard = (asset) => {
         collepsedDiv.innerHTML = `
         <div>
                <h3>Sub thead 1</h3>
-               <textarea placeholder="Enter Text here" ></textarea>
+               <textarea placeholder="Enter Text here" class = "col-inp"></textarea>
            </div>
            <div>
                <h3>Sub Interpretion 1</h3>
-               <textarea placeholder="Enter Text here"></textarea>
+               <textarea placeholder="Enter Text here" class = "col-inp"></textarea>
            </div>
           `
         // hare is constent div
@@ -234,12 +250,79 @@ const createTaskCard = (asset) => {
     }
 
     else if (asset_content_type == "article" && asset_type == "input_asset") {
-        card.append(head, p)
+        let contentDiv = document.createElement('div')
+        contentDiv.className = "inp-artical"
+        contentDiv.innerHTML = `
+        <!-- title -->
+        <div>
+            <h3>Title</h3>
+            <input type="text" placeholder="Enter title">
+        </div>
+
+        <!-- content -->
+        <div class="content">
+            <h3>Content</h3>
+            <div class="edit-tools">
+                <div>
+                    <a href="#">File</a>
+                    <a href="#">Edit</a>
+                    <a href="#">View</a>
+                    <a href="#">Insert</a>
+                    <a href="#">Format</a>
+                    <a href="#">Tools</a>
+                    <a href="#">Table</a>
+                    <a href="#">Help</a>
+                </div>
+                <div>
+                    <img src="./assets//undo.png" alt="undo">
+                    <img src="./assets/redo.png" alt="redo">
+                    <img src="./assets/fullscreen.png" alt="">
+                    <a href="#">Paragraph</a>
+                    <a href="#">...</a>
+                </div>
+            </div>
+            <div>
+                <textarea rows="5" placeholder="Enter Content"></textarea>
+            </div>
+        </div>
+        `
+        card.append(head, p,contentDiv)
     }
 
-    // else if (contType == "article" && assetType == "display_asset") {
+    else if (asset_content_type== "article" && asset_type == "display_asset") {
+const faqCont = document.createElement("div")
+faqCont.id = "faq-cont"
+faqCont.innerHTML = `
+<div id="colleps-faq">
+   <div class="faq-btn">
+    <div>
+        <img src="./assets/upAroow.png" alt="">
+    </div>
+    <h3>Introduction</h3>
+   </div>
+   <div class="faq-content">
+    <p>The 4SA Method , How to bring a idea into progress ?</p>
+    <a href="#">See More</a>
+   </div>
+</div>
 
-    // }
+<div id="colleps-faq">
+    <div class="faq-btn">
+     <div>
+         <img src="./assets/upAroow.png" alt="">
+     </div>
+     <h3>Thread A</h3>
+    </div>
+    <div class="faq-content">
+     <p>How are you going to develop your stratergy ? Which method are you going to use to develop a stratergy ? What if the project is lengthy?</p>
+
+     <a href="#">See More</a>
+    </div>
+ </div>
+
+`
+        card.append(head, p,faqCont)
+    }
 
     myAssetsCont.append(card)
 }

@@ -1,7 +1,9 @@
-/* *{
-    margin: 0px;
-    padding: 0px;
-} */
+* {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+
+}
 
 /* styling for header */
 header {
@@ -39,6 +41,14 @@ header>:last-child>span {
     position: absolute;
     z-index: 10;
     background-color: #fdfdfd;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
+
+
 }
 
 
@@ -48,6 +58,16 @@ header>:last-child>span {
     border-top-right-radius: 18px;
     cursor: pointer;
     width: 100%;
+    align-items: center;
+}
+
+.sidebar>button>div {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
 }
 
 .card-count>h3 {
@@ -55,8 +75,8 @@ header>:last-child>span {
     background-color: #fdfdfd;
     padding: 15px;
     border-radius: 12px;
-
     margin: 20px;
+    border: solid blue;
 }
 
 .colepsed {
@@ -106,15 +126,18 @@ header>:last-child>span {
     width: 70%;
     margin: auto;
 }
+
 /* hare is the main top heading saction styleing*/
-.main-top{
+.main-top {
     display: flex;
     justify-content: space-between;
 }
-.main-top>h1{
+
+.main-top>h1 {
     color: blue;
 }
-.main-top>button{
+
+.main-top>button {
     width: 14%;
     height: 30px;
     text-align: center;
@@ -124,23 +147,34 @@ header>:last-child>span {
     background-color: blue;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
-.main>:nth-child(2){
-   background-color: #e9ecef;
-   padding: 10px;
-   border-radius: 10px;
+
+.main>:nth-child(2) {
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 10px;
 }
-.main>:nth-child(2)>:first-child{
+
+.main>:nth-child(2)>:first-child {
     font-size: 30px;
     margin: 3px;
 }
 
 /* hare is asset card contener */
 .assets-cont {
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 100px;
+    gap: 40px;
+    font-family: Open Sans;
+    font-size: 14px;
     padding: 18px;
+    font-weight: 400;
+    line-height: 19.07px;
+    letter-spacing: 0.02em;
+    text-align: left;
+
 }
 
 /* hare is asset card  */
@@ -176,7 +210,7 @@ header>:last-child>span {
 }
 
 .thread-cont>button {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     border: none;
     cursor: pointer;
@@ -217,15 +251,19 @@ header>:last-child>span {
     border-radius: 10px;
     margin-top: 15px;
 }
-
-.thread-Child>div>textarea {
+.colleps-div>div>:first-child{
+    margin-top: 0px;
+    font-size: 14px;
+}
+.col-inp{
     width: 90%;
+    margin: auto;
 }
 
 .const-div {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .const-div>:first-child {
@@ -254,9 +292,9 @@ button {
     background-color: blue;
     color: white;
     text-align: center;
-    width: 30%;
+    width: 35%;
     border-radius: 12px;
-    padding: 10px 15px;
+    padding: 5px 10px;
     align-items: center;
     margin-top: 15px;
 }
@@ -269,4 +307,107 @@ button {
 
 .const-div>:last-child>textarea {
     width: 90%;
+}
+
+/* styling for card 3 artical writing input*/
+.inp-artical {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* title styling */
+.inp-artical>:first-child {
+    width: 100%;
+}
+
+.inp-artical>:first-child>h3 {
+    margin: 3px;
+}
+
+.inp-artical>:first-child>input {
+    width: 90%;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 5px;
+}
+
+/* content Styling */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content>h3 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.edit-tools {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 2px;
+    border-radius: 6px;
+}
+
+.edit-tools>:first-child {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.edit-tools>:first-child>a {
+    text-decoration: none;
+    font-size: 10px;
+    color: black;
+}
+
+.edit-tools>:last-child {
+    width: 65%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.edit-tools>:last-child>a {
+    text-decoration: none;
+    font-size: 12px;
+    color: black;
+}
+
+.content>:last-child>textarea {
+    width: 88%;
+    padding: 5px 10px;
+    margin: auto;
+    border: none;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+/* styling for card 4 */
+#faq-cont{
+    padding: 14px;
+}
+
+.faq-btn{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
+}
+
+.faq-content>a{
+text-align: right;
+width: 100%;
+color: black;
+
 }
