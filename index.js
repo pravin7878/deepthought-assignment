@@ -1,4 +1,5 @@
 const jsonData = {
+    "title": "Technical Project Management",
     "tasks": [
         {
             "task_id": 18882,
@@ -41,13 +42,7 @@ const jsonData = {
             ]
         },
     ],
-    "tid": 2085,
-    "timestamp": 1672891849700,
-    "title": "Technical Project Management",
-    "type": "project",
-    "uid": 100,
-    "viewcount": 0,
-    "publishedAt": 1672893847792
+
 }
 
 
@@ -56,10 +51,33 @@ const sidebarBtn = document.querySelector("#sidebar-btn")
 const sidebar = document.querySelector(".sidebar")
 const taskCount = document.querySelector(".card-count>h3")
 const taskInfo = document.querySelector(".tast-info")
-const taskContener = document.querySelector(".main")
 
+// hare is the main container
+const taskContener = document.querySelector(".main")
 const heading = document.querySelector(".main>div>h1")
 
+
+// when the dom load i call the getAlltask and send all tasks arr
+document.addEventListener("DOMContentLoaded", () => {
+    heading.innerText = jsonData?.title
+
+    getAllTask(jsonData?.tasks)
+}
+)
+
+// hare is i get all task
+const getAllTask = (tasks) => {
+    let taskCount = tasks.length
+    tasks?.map((task) => {
+        const { task_title, task_description, assets } = task
+        console.log(task);
+
+        creatTaskTop(task_title, task_description)
+
+        ganarateSideBarCon(taskCount, task_title, assets)
+        getTaskAssets(assets)
+    })
+}
 
 
 // for collaps the side bar
@@ -98,18 +116,20 @@ function togelSidebar() {
 }
 
 // hare is i get all task asset titel and subtitle and render it
-const getTaskInfo = (task) => {
+const ganarateSideBarCon = (count, title, assets) => {
     // make dynamik task count
-    taskCount.innerText = jsonData?.tasks.length
+    // taskCount.innerText = jsonData?.tasks.length
+    taskCount.innerText = count
 
     // hare is the info cart in inside sidebar
     let taskInfoCont = document.createElement('div')
     let taskTitle = document.createElement('h3')
-    taskTitle.innerText = task?.task_title
+    // taskTitle.innerText = task?.task_title
+    taskTitle.innerText = title
 
     let ul = document.createElement('ul')
 
-    task?.assets?.forEach((item) => {
+    assets?.forEach((item) => {
         let taskSubTitle = document.createElement('li')
         taskSubTitle.innerText = item.asset_title
         ul.append(taskSubTitle)
@@ -138,8 +158,8 @@ const creatTaskTop = (title, description) => {
 const myAssetsCont = document.createElement('div')
 myAssetsCont.className = "assets-cont"
 
-
-const createTaskCard = (asset) => {
+// here is the assets
+const createAssetCard = (asset) => {
 
     // console.log(asset);
     const {
@@ -184,7 +204,7 @@ const createTaskCard = (asset) => {
 `
         let threadChild = document.createElement("div")
         threadChild.className = "thread-Child"
-        
+
         // hare is collepsed div
         const collepsedDiv = document.createElement("div")
         collepsedDiv.className = "colleps-div"
@@ -282,17 +302,17 @@ const createTaskCard = (asset) => {
                 </div>
             </div>
             <div>
-                <textarea rows="5" placeholder="Enter Content"></textarea>
+                <textarea class="text-aria" rows="5" placeholder="Enter Content"></textarea>
             </div>
         </div>
         `
-        card.append(head, p,contentDiv)
+        card.append(head, p, contentDiv)
     }
 
-    else if (asset_content_type== "article" && asset_type == "display_asset") {
-const faqCont = document.createElement("div")
-faqCont.id = "faq-cont"
-faqCont.innerHTML = `
+    else if (asset_content_type == "article" && asset_type == "display_asset") {
+        const faqCont = document.createElement("div")
+        faqCont.id = "faq-cont"
+        faqCont.innerHTML = `
 <div id="colleps-faq">
    <div class="faq-btn">
     <div>
@@ -321,25 +341,16 @@ faqCont.innerHTML = `
  </div>
 
 `
-        card.append(head, p,faqCont)
+        card.append(head, p, faqCont)
     }
 
     myAssetsCont.append(card)
 }
 
 // get all task asset from task assets arr
-const getTaskAsset = (assets) => {
+const getTaskAssets = (assets) => {
     assets.map((asset) => {
-        console.log(asset);
-        const {
-            asset_title,
-            asset_description,
-            asset_content,
-            asset_type,
-            asset_content_type,
-        } = asset
-
-        createTaskCard(asset)
+        createAssetCard(asset)
     })
     taskContener.append(myAssetsCont)
 
@@ -347,22 +358,4 @@ const getTaskAsset = (assets) => {
 
 
 
-// hare is i get all task
-const getAllTask = (tasks) => {
-    tasks?.map((task) => {
-        const { task_title, task_description, assets } = task
-        getTaskInfo(task)
-        creatTaskTop(task_title, task_description
-        )
-        getTaskAsset(assets
-        )
-    })
-}
 
-// when the dom load i call the getAlltask and send all tasks arr
-document.addEventListener("DOMContentLoaded", () => {
-    heading.innerText = jsonData?.title
-
-    getAllTask(jsonData?.tasks)
-}
-)
