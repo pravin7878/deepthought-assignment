@@ -67,16 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // hare is i get all task
 const getAllTask = (tasks) => {
-    let taskCount = tasks.length
-    tasks?.map((task) => {
-        const { task_title, task_description, assets } = task
-        console.log(task);
-
-        creatTaskTop(task_title, task_description)
-
-        ganarateSideBarCon(taskCount, task_title, assets)
-        getTaskAssets(assets)
-    })
+    tasks.forEach((task) => {
+        const { task_title, task_description, assets } = task;
+        createTaskTop(task_title, task_description);
+        generateSidebarContent(tasks.length, task_title, assets);
+        getTaskAssets(assets);
+    });
 }
 
 
@@ -86,37 +82,32 @@ sidebarBtn.addEventListener('click', togelSidebar)
 let sidebarOpen = false
 function togelSidebar() {
     sidebarOpen = !sidebarOpen
-    if (sidebarOpen) {
-        sidebar.classList.add("colepsed")
-        taskCount.style.display = "none"
-        taskInfo.style.display = "block"
-        sidebar.style.height = "100%"
 
-        sidebarBtn.innerHTML = `<div>
-                    <h3>Journey Board</h3>
-                    <div>
-                        <img src="./assets/backArrow.png" alt="">
-                    </div>
-                </div>`
-    }
-    else {
-        sidebar.classList.remove("colepsed")
-        taskCount.style.display = "block"
-        taskInfo.style.display = "none"
-        sidebar.style.height = "50%"
+    // this will add and remove clase based od sidebarOpen value
+    sidebar.classList.toggle('colepsed', sidebarOpen);
+    taskCount.style.display = sidebarOpen ? 'none' : 'block';
+    taskInfo.style.display = sidebarOpen ? 'block' : 'none';
+    sidebar.style.height = sidebarOpen ? '100%' : '50%';
 
-        sidebarBtn.innerHTML = `
-         <div>
-                    <h3></h3>
-                    <div>
-                        <img src="./assets/arrbtn.png" alt="">
-                    </div>
-                </div>`
-    }
+    sidebarBtn.innerHTML = sidebarOpen ? `
+        <div>
+            <h3>Journey Board</h3>
+            <div>
+                <img src="./assets/backArrow.png" alt="">
+            </div>
+        </div>`
+         :
+          `
+        <div>
+            <h3></h3>
+            <div>
+                <img src="./assets/arrbtn.png" alt="">
+            </div>
+        </div>`;
 }
 
 // hare is i get all task asset titel and subtitle and render it
-const ganarateSideBarCon = (count, title, assets) => {
+const generateSidebarContent = (count, title, assets) => {
     // make dynamik task count
     // taskCount.innerText = jsonData?.tasks.length
     taskCount.innerText = count
@@ -139,7 +130,7 @@ const ganarateSideBarCon = (count, title, assets) => {
 }
 
 // hare is I create Top bar for all Tasks
-const creatTaskTop = (title, description) => {
+const createTaskTop = (title, description) => {
     let div = document.createElement('div')
     let heading = document.createElement('h3')
     heading.innerText = title
